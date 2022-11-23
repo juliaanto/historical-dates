@@ -1,8 +1,10 @@
+import Block from "./main.styled";
+
 function Main() {
   return (
-    <div>
-      Исторические даты
-    </div>
+    <Block>
+      <Block.Header>Исторические даты</Block.Header>
+    </Block>
   )
 }
 
