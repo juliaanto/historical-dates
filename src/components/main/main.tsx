@@ -4,7 +4,7 @@ import TimeWheel from '../time-wheel/time-wheel';
 function Main() {
   return (
     <Block>
-      <Block.Header>Исторические даты</Block.Header>
+      <Block.Heading>Исторические даты</Block.Heading>
       <TimeWheel />
     </Block>
   )
