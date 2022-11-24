@@ -9,13 +9,13 @@ type ControlsProps = {
 function Controls({currentIndex, handleChangeCurrentIndex}: ControlsProps) {
 
   const handlePrevButtonClick = () => {
-    if (currentIndex !== 1) {
+    if (currentIndex !== 0) {
       handleChangeCurrentIndex(currentIndex - 1)
     }
   };
 
   const handleNextButtonClick = () => {
-    if (currentIndex !== DATA.length) {
+    if (currentIndex !== DATA.length - 1) {
       handleChangeCurrentIndex(currentIndex + 1)
     }
   };
@@ -23,11 +23,11 @@ function Controls({currentIndex, handleChangeCurrentIndex}: ControlsProps) {
   return (
     <Block>
       <Block.Index>
-        {new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 2 }).format(currentIndex)}/
+        {new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 2 }).format(currentIndex + 1)}/
         {new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 2 }).format(DATA.length)}
       </Block.Index>
-      <Block.Button onClick={handlePrevButtonClick} $isDisabled={currentIndex === 1} />
-      <Block.Button onClick={handleNextButtonClick} $isDisabled={currentIndex === DATA.length} $isNext/>
+      <Block.Button onClick={handlePrevButtonClick} $isDisabled={currentIndex === 0} />
+      <Block.Button onClick={handleNextButtonClick} $isDisabled={currentIndex === DATA.length - 1} $isNext/>
     </Block>
   )
 }
