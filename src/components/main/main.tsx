@@ -1,11 +1,17 @@
 import Block from './main.styled';
 import TimeWheel from '../time-wheel/time-wheel';
+import { useState } from "react";
 
 function Main() {
+  const [currentIndex, setCurrentIndex] = useState(1);
+    
   return (
     <Block>
       <Block.Heading>Исторические даты</Block.Heading>
-      <TimeWheel />
+      <TimeWheel 
+        currentIndex={currentIndex}
+        handleChangeCurrentIndex={(index: number) => setCurrentIndex(index)}
+      />
     </Block>
   )
 }

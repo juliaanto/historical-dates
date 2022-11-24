@@ -1,19 +1,22 @@
 import Block from "./controls.styled";
-import DATA from "../../data/events";
-import { useState } from "react";
+import DATA from "../../data/data";
 
-function Controls() {
-  const [currentIndex, setCurrentIndex] = useState(1);
+type ControlsProps = {
+  currentIndex: number;
+  handleChangeCurrentIndex: (index: number) => void;
+}
+
+function Controls({currentIndex, handleChangeCurrentIndex}: ControlsProps) {
 
   const handlePrevButtonClick = () => {
     if (currentIndex !== 1) {
-      setCurrentIndex(currentIndex - 1)
+      handleChangeCurrentIndex(currentIndex - 1)
     }
   };
 
   const handleNextButtonClick = () => {
     if (currentIndex !== DATA.length) {
-      setCurrentIndex(currentIndex + 1)
+      handleChangeCurrentIndex(currentIndex + 1)
     }
   };
   

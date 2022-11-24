@@ -2,11 +2,22 @@ import Block from "./time-wheel.styled";
 import Controls from "../controls/controls";
 import Wheel from "../wheel/wheel";
 
-function TimeWheel() {
+type TimeWheelProps = {
+  currentIndex: number;
+  handleChangeCurrentIndex: (index: number) => void;
+}
+
+function TimeWheel({currentIndex, handleChangeCurrentIndex}: TimeWheelProps) {
   return (
     <Block>
-      <Wheel />
-      <Controls />
+      <Wheel
+        currentIndex={currentIndex}
+        handleChangeCurrentIndex={handleChangeCurrentIndex}
+      />
+      <Controls
+        currentIndex={currentIndex}
+        handleChangeCurrentIndex={handleChangeCurrentIndex}
+      />
     </Block>
   )
 }

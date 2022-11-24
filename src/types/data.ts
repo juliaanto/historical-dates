@@ -3,7 +3,7 @@ type Event = {
   description: string,
 }
 
-type Events = {
+export type Events = {
   topic?: string,
   events: Event[],
 }
