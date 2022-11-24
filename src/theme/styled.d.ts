@@ -5,6 +5,7 @@ declare module 'styled-components' {
     color: {
       basicLight: string;
       basicDark: string;
+      basicDarkRGB: string;
     };
   }
 }

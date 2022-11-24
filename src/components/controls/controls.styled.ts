@@ -6,7 +6,8 @@ interface ButtonProps {
 }
 
 const Block: any = styled.div`
-  margin-top: 50px;
+  margin-top: -48px;
+  margin-left: 80px;
   width: 120px;
   display: flex;
   flex-wrap: wrap;
