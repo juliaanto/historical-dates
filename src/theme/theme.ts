@@ -5,6 +5,8 @@ const theme: DefaultTheme = {
     basicLight: '#f4f5f9',
     basicDark: '#42567A',
     basicDarkRGB: '66, 86, 122',
+    specialBlue: '#5d5fef',
+    specialPink: '#ef5da8',
   },
 };
 

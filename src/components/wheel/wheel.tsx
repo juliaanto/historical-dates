@@ -1,3 +1,4 @@
+import { getBeginningYear, getEndingYear, sortTopics } from "../../utils/sort-data";
 import { getFinishBasisPosition, getStartBasisPosition } from "../../utils/angle";
 import { useEffect, useLayoutEffect, useRef } from "react";
 
@@ -12,6 +13,8 @@ type WheelProps = {
 }
 
 function Wheel({currentIndex, handleChangeCurrentIndex}: WheelProps) {
+  const data = sortTopics(DATA);
+  
   const basisRef = useRef<any>();
 
   function usePreviousValue(value: any) {
@@ -41,10 +44,14 @@ function Wheel({currentIndex, handleChangeCurrentIndex}: WheelProps) {
   return (
     <Block>
       <Block.Basis ref={basisRef}>
-        {DATA.map((item, index) => (
+        {data.map((item, index) => (
           <Point key={index} item={item} currentIndex={currentIndex} handleChangeCurrentIndex={handleChangeCurrentIndex} />
         ))}
       </Block.Basis>
+      <Block.Years>
+          <Block.Year $isBegining>{getBeginningYear(data, currentIndex)}</Block.Year>
+          <Block.Year>{getEndingYear(data, currentIndex)}</Block.Year>
+        </Block.Years>
     </Block>
   )
 }

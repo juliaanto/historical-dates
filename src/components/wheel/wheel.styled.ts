@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
+interface YearProps {
+  $isBegining: boolean;
+}
+
 const Block: any = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
 
   &::after {
@@ -24,6 +29,18 @@ Block.Basis = styled.div`
   display: flex;
   justify-content: center;
   z-index: 1;
+`;
+
+Block.Years = styled.div`
+  position: absolute;
+  display: flex;
+  gap: 80px;
+`;
+
+Block.Year = styled.p<YearProps>`
+  font-size: 200px;
+  font-weight: 700;
+  color: ${({ $isBegining, theme }) => $isBegining ? theme.color.specialBlue : theme.color.specialPink};
 `;
 
 export default Block;

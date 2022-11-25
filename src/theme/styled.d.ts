@@ -6,6 +6,8 @@ declare module 'styled-components' {
       basicLight: string;
       basicDark: string;
       basicDarkRGB: string;
+      specialBlue: string;
+      specialPink: string;
     };
   }
 }
