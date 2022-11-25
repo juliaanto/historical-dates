@@ -45,6 +45,7 @@ const DATA:Data = [
     ]
   },
   {
+    topic: 'Литература',
     events: [
       {
         year: 2015,

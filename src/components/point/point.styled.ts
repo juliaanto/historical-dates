@@ -4,8 +4,8 @@ interface SegmentProps {
   $angle: number;
 }
 
-interface PointProps {
-  $isCurrent: boolean;
+interface PointWrapperProps {
+  $isActive: boolean;
 }
 
 const Block: any = styled.div<SegmentProps>`
@@ -14,31 +14,21 @@ const Block: any = styled.div<SegmentProps>`
   transform: ${({ $angle }) => `rotate(${$angle}deg)`};
 `;
 
-Block.Point = styled.div<PointProps>`
-  border-radius: 50%;
-  cursor: pointer;
+Block.PointWrapper = styled.div<PointWrapperProps>`
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  position: relative;
 
-  ${({ $isCurrent }) =>
-    $isCurrent ?
+  ${({ $isActive }) =>
+    $isActive ?
     css`
-      margin-top: -44%;
-      border: 1px solid rgba(${({ theme }) => theme.color.basicDarkRGB}, .2);
-      background-color: ${({ theme }) => theme.color.basicLight};
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    `:
-    css`
-      margin-top: -50%;
-      outline: 3px solid ${({ theme }) => theme.color.basicDark};
-      outline-offset: -28px;
-
-      &:hover {
-        outline: none;
-        margin-top: -44%;
+      & div {
         border: 1px solid rgba(${({ theme }) => theme.color.basicDarkRGB}, .2);
         background-color: ${({ theme }) => theme.color.basicLight};
         display: flex;
@@ -46,7 +36,33 @@ Block.Point = styled.div<PointProps>`
         align-items: center;
         position: relative;
       }
+    `:
+    css`
+      & div {
+        width: 6px;
+        height: 6px;
+        background-color: ${({ theme }) => theme.color.basicDark};
+        overflow: hidden;
+        transition: width 0.5s, height 0.5s, background-color 0.5s, overflow 10s;
+      }
+
+      &:hover div {
+        width: 100%;
+        height: 100%;
+        background-color: ${({ theme }) => theme.color.basicLight};
+        border: 1px solid rgba(${({ theme }) => theme.color.basicDarkRGB}, .2);
+        transition: width 0.5s, height 0.5s, background-color 0.5s;
+      }
     `}
+`;
+
+Block.Point = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 `;
 
 Block.Index = styled.p`
