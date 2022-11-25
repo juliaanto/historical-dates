@@ -1,8 +1,9 @@
+import { getFinishBasisPosition, getStartBasisPosition } from "../../utils/angle";
 import { useEffect, useLayoutEffect, useRef } from "react";
 
 import Block from "./wheel.styled";
 import DATA from "../../data/data";
-import { getAngle } from "../../utils/angle";
+import Point from "../point/point";
 import gsap from "gsap";
 
 type WheelProps = {
@@ -11,7 +12,7 @@ type WheelProps = {
 }
 
 function Wheel({currentIndex, handleChangeCurrentIndex}: WheelProps) {
-  const segmentRef = useRef<any>();
+  const basisRef = useRef<any>();
 
   function usePreviousValue(value: any) {
     const ref = useRef();
@@ -24,40 +25,24 @@ function Wheel({currentIndex, handleChangeCurrentIndex}: WheelProps) {
   const prevIndex = usePreviousValue(currentIndex) || 0;
   
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(segmentRef.current, {
-        rotation: -(360/DATA.length)*prevIndex
+    const basisRotation = gsap.context(() => {
+      gsap.fromTo(basisRef.current, {
+        rotation: getStartBasisPosition(prevIndex)
       },
       {
         duration: 1, 
-        rotation: Math.abs((360/DATA.length)*(prevIndex - currentIndex)) < 180 ? -(360/DATA.length)*currentIndex : 360 - Math.abs((360/DATA.length)*currentIndex)
+        rotation: getFinishBasisPosition(prevIndex, currentIndex)
       })
-    }, segmentRef);
+    }, basisRef);
 
-    return () => ctx.revert();
+    return () => basisRotation.revert();
   }, [currentIndex, prevIndex]);
-  
+
   return (
     <Block>
-      <Block.Basis ref={segmentRef}>
+      <Block.Basis ref={basisRef}>
         {DATA.map((item, index) => (
-          <Block.Segment 
-            $angle={getAngle(item)} 
-            key={index}
-          >
-            <Block.Point 
-              $angle={getAngle(item)}
-              $isCurrent={DATA.indexOf(item) === currentIndex}
-              onClick={() => handleChangeCurrentIndex(DATA.indexOf(item))}
-            >
-              {DATA.indexOf(item) === currentIndex &&
-                <>
-                  <Block.Index>{DATA.indexOf(item) + 1}</Block.Index>
-                  <Block.Topic>{item.topic}</Block.Topic>
-                </>
-              }
-            </Block.Point>
-          </Block.Segment>
+          <Point key={index} item={item} currentIndex={currentIndex} handleChangeCurrentIndex={handleChangeCurrentIndex} />
         ))}
       </Block.Basis>
     </Block>
