@@ -28,8 +28,8 @@ function Controls({currentIndex, handleChangeCurrentIndex}: ControlsProps) {
         {new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 2 }).format(currentIndex + 1)}/
         {new Intl.NumberFormat('en-IN', { minimumIntegerDigits: 2 }).format(data.length)}
       </Block.Index>
-      <Block.Button onClick={handlePrevButtonClick} $isDisabled={currentIndex === 0} />
-      <Block.Button onClick={handleNextButtonClick} $isDisabled={currentIndex === data.length - 1} $isNext/>
+      <Block.Button onClick={handlePrevButtonClick} disabled={currentIndex === 0} />
+      <Block.Button onClick={handleNextButtonClick} disabled={currentIndex === data.length - 1} $isNext/>
     </Block>
   )
 }

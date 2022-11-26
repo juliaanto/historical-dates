@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 interface ButtonProps {
   $isNext: boolean;
-  $isDisabled: boolean;
 }
 
 const Block: any = styled.div`
@@ -37,11 +36,14 @@ Block.Button = styled.button<ButtonProps>`
     transform: ${({ $isNext }) => $isNext ? 'translate(-65%, -50%) rotate(45deg)' : 'translate(-25%, -50%) rotate(225deg)'};
   }
 
-  ${({ $isDisabled }) =>
-    $isDisabled &&
-    css`
-      opacity: 0.5;
-    `}
+  &:not(:disabled):hover {
+    background-color: ${({ theme }) => theme.color.basicWhite};
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
 `;
 
 export default Block;
