@@ -1,4 +1,4 @@
-import { Data } from "../types/data";
+import { Data } from "../../types/data";
 
 const sortEvents = (data: Data, index: number) => data[index].events.sort((itemA, itemB) => itemA.year - itemB.year)
 

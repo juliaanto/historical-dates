@@ -2,9 +2,12 @@ import Block from './main.styled';
 import Slider from '../slider/slider';
 import TimeWheel from '../time-wheel/time-wheel';
 import { useState } from "react";
+import useViewport from '../../common/hooks/useViewport';
+import Controls from '../controls/controls';
 
 function Main() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isMobile = useViewport();
     
   return (
     <Block>
@@ -13,7 +16,17 @@ function Main() {
         currentIndex={currentIndex}
         handleChangeCurrentIndex={(index: number) => setCurrentIndex(index)}
       />
+      {!isMobile &&
+        <Controls 
+          currentIndex={currentIndex}
+          handleChangeCurrentIndex={(index: number) => setCurrentIndex(index)}
+        />}
       <Slider currentIndex={currentIndex} />
+      {isMobile &&
+        <Controls 
+          currentIndex={currentIndex}
+          handleChangeCurrentIndex={(index: number) => setCurrentIndex(index)}
+        />}
     </Block>
   )
 }

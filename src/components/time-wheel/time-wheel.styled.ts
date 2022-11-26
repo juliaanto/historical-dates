@@ -1,37 +1,70 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { WIDTH } from '../../common/data/width';
 
-interface ButtonProps {
-  $isNext: boolean;
-  $isDisabled: boolean;
+interface YearProps {
+  $isBegining: boolean;
 }
 
 const Block: any = styled.div`
-`;
-
-Block.Button = styled.button<ButtonProps>`
-  margin: 20px;
-  border-radius: 50%;
-  border: 1px solid rgba(66, 86, 122, 0.5);
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 
-  &::before {
+  &::after {
     content: "";
     position: absolute;
-    width: 8.84px;
-    height: 8.84px;
-    border-top: 2px solid ${({ theme }) => theme.color.basicDark};
-    border-right: 2px solid ${({ theme }) => theme.color.basicDark};
-    transform: ${({ $isNext }) => $isNext ? 'translate(-65%, -50%) rotate(45deg)' : 'translate(-25%, -50%) rotate(225deg)'};
+    height: 1px;
+    background-color: ${({ theme }) => theme.color.basicGrey};
+    left: 0;
+    right: 0;
+    top: 100%;
   }
 
-  ${({ $isDisabled }) =>
-    $isDisabled &&
-    css`
-      opacity: 0.5;
-    `}
+  @media (min-width: ${WIDTH.desktop}px) {
+    &::after {
+      top: 50%;
+      background-color: rgba(${({ theme }) => theme.color.basicDarkRGB}, .1);
+    }
+  }
+`;
+
+Block.Basis = styled.div`
+  width: 530px;
+  height: 530px;
+  border: 1px solid rgba(${({ theme }) => theme.color.basicDarkRGB}, .2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+`;
+
+Block.Years = styled.div`
+  display: flex;
+  padding-bottom: 60px;
+  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 350px;
+
+  @media (min-width: ${WIDTH.desktop}px) {
+    position: absolute;
+    padding-bottom: 0;
+    gap: 80px;
+    width: auto;
+    max-width: none;
+  }
+`;
+
+Block.Year = styled.p<YearProps>`
+  font-size: 56px;
+  font-weight: 700;
+  color: ${({ $isBegining, theme }) => $isBegining ? theme.color.basicBlue : theme.color.specialPink};
+
+  @media (min-width: ${WIDTH.desktop}px) {
+    font-size: 200px;
+    color: ${({ $isBegining, theme }) => $isBegining ? theme.color.specialBlue : theme.color.specialPink};
+  }
 `;
 
 export default Block;

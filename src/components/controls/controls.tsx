@@ -1,6 +1,6 @@
 import Block from "./controls.styled";
-import DATA from "../../data/data";
-import { sortTopics } from "../../utils/sort-data";
+import DATA from "../../common/data/data";
+import { sortTopics } from "../../common/utils/sort-data";
 
 type ControlsProps = {
   currentIndex: number;

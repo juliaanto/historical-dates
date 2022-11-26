@@ -1,5 +1,5 @@
 import DATA from '../data/data';
-import { Events } from '../types/data';
+import { Events } from '../../types/data';
 
 const currentPointOffset = 360/DATA.length - 30;
 

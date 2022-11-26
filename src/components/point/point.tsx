@@ -1,10 +1,11 @@
-import { getFinishBasisPosition, getPointAngle, getStartBasisPosition } from "../../utils/angle";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { getFinishBasisPosition, getPointAngle, getStartBasisPosition } from "../../common/utils/angle";
+import { useLayoutEffect, useRef } from "react";
 
 import Block from "./point.styled";
-import DATA from "../../data/data";
+import DATA from "../../common/data/data";
 import { Events } from "../../types/data";
 import gsap from "gsap";
+import usePreviousValue from "../../common/hooks/usePreviousValue";
 
 type PointProps = {
   item: Events;
@@ -16,15 +17,6 @@ function Point({item, currentIndex, handleChangeCurrentIndex}: PointProps) {
   const pointRef = useRef<any>();
   const topicPrevRef = useRef<any>();
   const topicCurrentRef = useRef<any>();
-
-  function usePreviousValue(value: any) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
-
   const prevIndex = usePreviousValue(currentIndex) || 0;
 
   useLayoutEffect(() => {
