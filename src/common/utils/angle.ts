@@ -7,4 +7,15 @@ export const getPointAngle = (item: Events) => (360/DATA.length)*(DATA.indexOf(i
 
 export const getStartBasisPosition = (prevIndex: number) => -(360/DATA.length)*prevIndex;
 
-export const getFinishBasisPosition = (prevIndex: number, currentIndex: number) => Math.abs((360/DATA.length)*(prevIndex - currentIndex)) < 180 ? -(360/DATA.length)*currentIndex : (360 - Math.abs((360/DATA.length)*currentIndex)) % 360;
+export const getFinishBasisPosition = (prevIndex: number, currentIndex: number) => {
+  const startPosition = getStartBasisPosition(prevIndex);
+  let offset = 360/DATA.length*(prevIndex - currentIndex);
+  
+  if (offset > 180) {
+    offset -= 360;
+  } else if (offset < -180) {
+    offset += 360;
+  }
+
+  return startPosition + offset;
+}
