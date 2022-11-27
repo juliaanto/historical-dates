@@ -27,6 +27,7 @@ function Slider({currentIndex}: SliderProps) {
         navigation={!isMobile}
         modules={[Navigation]}
         grabCursor
+        style={{ marginLeft: '80px', marginRight: '80px', position: 'unset' }}
       >
         {data[currentIndex].events.map((item, index) => (
           <SwiperSlide key={index}>

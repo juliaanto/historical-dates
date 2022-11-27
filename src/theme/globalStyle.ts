@@ -36,12 +36,20 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  .swiper-button-prev::before {
-    transform: rotate(225deg) translate(-15%, 15%);
+  .swiper-button-prev {
+    left: 20px;
+
+    &::before {
+      transform: rotate(225deg) translate(-15%, 15%);
+    }
   }
 
-  .swiper-button-next::before {
-    transform: rotate(45deg) translate(-15%, 15%);
+  .swiper-button-next {
+    right: 20px;
+    
+    &::before {
+      transform: rotate(45deg) translate(-15%, 15%);
+    }
   }
 
   .swiper-button-disabled {

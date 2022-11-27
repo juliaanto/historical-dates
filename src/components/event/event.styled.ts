@@ -3,6 +3,10 @@ import { WIDTH } from "../../common/data/width";
 
 const Block: any = styled.div`
   max-width: 200px;
+
+  @media (min-width: ${WIDTH.desktop}px) {
+    max-width: none;
+  }
 `;
 
 Block.Year = styled.p`
