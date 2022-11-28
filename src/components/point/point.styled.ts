@@ -8,6 +8,11 @@ interface PointWrapperProps {
   $isActive: boolean;
 }
 
+interface TopicProps {
+  $isPrev: boolean;
+  $isCurrent: boolean;
+}
+
 const Block: any = styled.div<SegmentProps>`
   position: absolute;
   transform-origin: center 265px;
@@ -69,13 +74,13 @@ Block.Index = styled.p`
   font-size: 20px;
 `;
 
-Block.Topic = styled.p`
-  position: absolute;
-  margin-left: 75px;
-  margin-bottom: 4px;
+Block.Topic = styled.p<TopicProps>`
   font-weight: 700;
   font-size: 20px;
-  left: 0;
+  position: absolute;
+  width: 250px;
+  transform: translate(54px, -158px);
+  display: ${({$isPrev, $isCurrent}) => $isPrev || $isCurrent ? 'block' : 'none'};
 `;
 
 export default Block;
