@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.color.basicDark};
   }
 
+  .swiper-slide {
+    width: auto;
+  }
+
   .swiper-button-prev,
   .swiper-button-next {
     border-radius: 50%;
@@ -54,6 +58,26 @@ const GlobalStyle = createGlobalStyle`
 
   .swiper-button-disabled {
     display: none;
+  }
+
+  .swiper-pagination {
+    position: unset;
+    margin-top: 50px;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 var(--swiper-pagination-bullet-horizontal-gap,5px);
+  }
+
+  .swiper-pagination-bullet {
+    background-color: ${({ theme }) => theme.color.basicDark};
+    opacity: 0.4;
+    width: 6px;
+    height: 6px;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1;
   }
 `;
 

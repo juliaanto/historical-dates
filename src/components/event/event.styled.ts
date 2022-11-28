@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { WIDTH } from "../../common/data/width";
 
 const Block: any = styled.div`
-  max-width: 200px;
+  max-width: 165px;
 
   @media (min-width: ${WIDTH.desktop}px) {
-    max-width: none;
+    max-width: 320px;
   }
 `;
 
@@ -22,9 +22,11 @@ Block.Year = styled.p`
 
 Block.Description = styled.p`
   font-size: 14px;
+  line-height: 1.45;
 
   @media (min-width: ${WIDTH.desktop}px) {
     font-size: 20px;
+    line-height: 1.5;
   }
 `;
 

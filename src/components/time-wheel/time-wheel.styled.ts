@@ -49,7 +49,7 @@ Block.Years = styled.div`
 
   @media (min-width: ${WIDTH.desktop}px) {
     position: absolute;
-    padding-bottom: 0;
+    padding-bottom: 24px;
     gap: 80px;
     width: auto;
     max-width: none;

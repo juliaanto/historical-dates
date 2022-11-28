@@ -27,11 +27,13 @@ Block.Heading = styled.h1`
   font-size: 20px;
   line-height: 120%;
   width: min-content;
+  margin-top: 40px;
   margin-bottom: 54px;
 
   @media (min-width: ${WIDTH.desktop}px) {
     margin-bottom: -87px;
     margin-left: 0;
+    margin-top: 0;
     font-size: 56px;
     border-left-width: 5px;
     border-left-style: solid;

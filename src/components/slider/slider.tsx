@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Block from './slider.styled';
 import DATA from '../../common/data/data';
 import Event from '../event/event';
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import { sortTopics } from '../../common/utils/sort-data';
 import useViewport from '../../common/hooks/useViewport';
 
@@ -23,15 +23,17 @@ function Slider({currentIndex}: SliderProps) {
     <Block>
       <Swiper
         spaceBetween={isMobile ? 25 : 80}
-        slidesPerView={isMobile ? 1.5 : 3}
+        slidesPerView={"auto"}
+        modules={[Navigation, Pagination]}
         navigation={!isMobile}
-        modules={[Navigation]}
+        pagination={isMobile ? {clickable: true} : false}
         grabCursor
-        style={{ marginLeft: '80px', marginRight: '80px', position: 'unset' }}
+        style={!isMobile ? { marginLeft: '80px', marginRight: '80px', position: 'unset' } : {}}
+        initialSlide={0}
       >
         {data[currentIndex].events.map((item, index) => (
           <SwiperSlide key={index}>
-            <Event year={item.year} description={item.description} />
+            <Event year={item.year} description={item.description} currentIndex={currentIndex} />
           </SwiperSlide>
         ))}
       </Swiper>
