@@ -80,7 +80,7 @@ function Point({item, currentIndex, handleChangeCurrentIndex}: PointProps) {
         {
           color: theme.color.basicDark,
           duration: 0.1,
-          delay: 1
+          delay: prevIndex !== currentIndex ? 1 : 0
         })
     }, topicCurrentRef);
 

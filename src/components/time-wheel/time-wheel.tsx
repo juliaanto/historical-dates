@@ -1,4 +1,4 @@
-import { getBeginningYear, getEndingYear, sortTopics } from "../../common/utils/sort-data";
+import { sortTopics } from "../../common/utils/sort-data";
 import { getFinishBasisPosition, getStartBasisPosition } from "../../common/utils/angle";
 import { useLayoutEffect, useRef } from "react";
 
@@ -8,6 +8,7 @@ import Point from "../point/point";
 import gsap from "gsap";
 import useViewport from "../../common/hooks/useViewport";
 import usePreviousValue from "../../common/hooks/usePreviousValue";
+import Years from "../years/years";
 
 type WheelProps = {
   currentIndex: number;
@@ -19,7 +20,7 @@ function Wheel({currentIndex, handleChangeCurrentIndex}: WheelProps) {
   const basisRef = useRef<any>();
   const isMobile = useViewport();
   const prevIndex = usePreviousValue(currentIndex) || 0;
-  
+
   useLayoutEffect(() => {
     const basisRotation = gsap.context(() => {
       if (!basisRef.current) {
@@ -31,7 +32,7 @@ function Wheel({currentIndex, handleChangeCurrentIndex}: WheelProps) {
       },
       {
         duration: 1, 
-        rotation: getFinishBasisPosition(prevIndex, currentIndex)
+        rotation: getFinishBasisPosition(prevIndex, currentIndex),
       })
     }, basisRef);
 
@@ -47,10 +48,7 @@ function Wheel({currentIndex, handleChangeCurrentIndex}: WheelProps) {
           ))}
         </Block.Basis>
       }
-      <Block.Years>
-          <Block.Year $isBegining>{getBeginningYear(data, currentIndex)}</Block.Year>
-          <Block.Year>{getEndingYear(data, currentIndex)}</Block.Year>
-        </Block.Years>
+    <Years currentIndex={currentIndex} />
     </Block>
   )
 }
