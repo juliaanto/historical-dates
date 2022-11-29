@@ -28,7 +28,6 @@ function Slider({currentIndex}: SliderProps) {
         navigation={!isMobile}
         pagination={isMobile ? {clickable: true} : false}
         grabCursor
-        style={!isMobile ? { marginLeft: '80px', marginRight: '80px', position: 'unset' } : {}}
         initialSlide={0}
       >
         {data[currentIndex].events.map((item, index) => (

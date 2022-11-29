@@ -5,9 +5,13 @@ const Block: any = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: ${WIDTH.desktop}px) {
     padding: 167px 0 0 0;
+    height: auto;
 
     &::after {
       content: "";

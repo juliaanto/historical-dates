@@ -4,6 +4,7 @@ import { WIDTH } from '../../common/data/width';
 const Block: any = styled.div`
   margin-top: 20px;
   position: relative;
+  flex-grow: 1;
 
   @media (min-width: ${WIDTH.desktop}px) {
     margin: 56px 0 100px;

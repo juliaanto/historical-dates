@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { WIDTH } from '../common/data/width';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -12,6 +13,19 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'PT Sans', sans-serif;
     background-color: ${({ theme }) => theme.color.basicLight};
     color: ${({ theme }) => theme.color.basicDark};
+  }
+
+  .swiper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @media (min-width: ${WIDTH.desktop}px) {
+      height: auto;
+      margin-left: 80px;
+      margin-right: 80px;
+      position: unset;
+    }
   }
 
   .swiper-slide {
@@ -62,7 +76,6 @@ const GlobalStyle = createGlobalStyle`
 
   .swiper-pagination {
     position: unset;
-    margin-top: 50px;
   }
 
   .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
