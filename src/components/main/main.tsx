@@ -8,6 +8,9 @@ import Controls from '../controls/controls';
 function Main() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const isMobile = useViewport();
+
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
     
   return (
     <Block>
