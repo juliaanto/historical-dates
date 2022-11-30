@@ -9,6 +9,13 @@ const Block: any = styled.div`
   }
 `;
 
+Block.PrevEvent = styled.div`
+  position: absolute;
+`;
+
+Block.CurrentEvent = styled.div`
+`;
+
 Block.Year = styled.p`
   font-family: 'Bebas Neue', cursive;
   font-size: 16px;
