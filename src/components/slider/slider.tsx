@@ -10,6 +10,8 @@ import Event from '../event/event';
 import { Navigation, Pagination } from "swiper";
 import { sortTopics } from '../../common/utils/sort-data';
 import useViewport from '../../common/hooks/useViewport';
+import { useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 type SliderProps = {
   currentIndex: number;
@@ -18,9 +20,31 @@ type SliderProps = {
 function Slider({currentIndex}: SliderProps) {
   const data = sortTopics(DATA);
   const isMobile = useViewport();
+  const lineRef = useRef<any>();
+
+  useLayoutEffect(() => {
+    const eventAppearance = gsap.context(() => {
+      if (!lineRef.current) {
+        return;
+      }
+      
+      gsap.from(lineRef.current, {
+        y: 10,
+        opacity: 0,
+        duration: 0.3,
+        delay: 0.3
+      })
+    }, lineRef);
+
+    return () => eventAppearance.revert();
+  }, [currentIndex, isMobile]);
+
   
   return (
     <Block>
+      {isMobile &&
+        <Block.Line ref={lineRef} />
+      }
       <Swiper
         spaceBetween={isMobile ? 25 : 80}
         slidesPerView={"auto"}

@@ -7,18 +7,13 @@ const Block: any = styled.div`
   align-items: center;
   position: relative;
 
-  &::after {
-    content: "";
-    position: absolute;
-    height: 1px;
-    background-color: ${({ theme }) => theme.color.basicGrey};
-    left: 0;
-    right: 0;
-    top: 100%;
-  }
-
   @media (min-width: ${WIDTH.desktop}px) {
     &::after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      left: 0;
+      right: 0;
       top: 50%;
       background-color: rgba(${({ theme }) => theme.color.basicDarkRGB}, .1);
     }

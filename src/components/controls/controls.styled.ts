@@ -11,7 +11,8 @@ const Block: any = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 10px;
-  margin-top: -38px;
+  margin-top: -17px;
+  z-index: 1;
 
   @media (min-width: ${WIDTH.desktop}px) {
     width: 120px;
