@@ -1,13 +1,31 @@
-### Запуск проекта
+# Historical dates
+Block of information about time intervals
 
-1. Установить все зависимости проекта
+## General Information
+The block contains information about time intervals, in each of which there are several events. When switching time periods, the corresponding numbers change and a new slider is shown below them, which contains detailed information on key events in the active time period.
+
+
+## Technologies Used
+- TypeScript
+- React
+- styled-components
+- Swiper
+- GSAP
+
+
+## Сomposition
+- Circle of time with animated time period switching
+- Slider with detailed information about key events in the active time period
+- Adaptive layout
+
+
+## How to run
+To clone and run this application:
+
 ```
+git clone https://github.com/juliaanto/historical-dates.git
+cd historical-dates
 npm install
-```
-
-2. Запустить проект
-```
 npm start
 ```
-
-После запуска приложение будет доступно для просмотра в браузере по адресу: [http://localhost:3000](http://localhost:3000).
+The application will be available at [localhost:3000](http://localhost:3000).
